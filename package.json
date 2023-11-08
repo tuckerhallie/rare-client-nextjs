@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "medium-rare-booksellers",
   "private": true,
   "version": "1.0.0",
-  "author": "Update Name!",
+  "author": "Sherwin Mcmaddens",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
