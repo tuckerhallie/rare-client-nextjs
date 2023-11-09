@@ -1,7 +1,9 @@
-// import endpoint from '../utils/data/endpoint';
+import clientCredentials from '../utils/data/client';
+
+const endpoint = clientCredentials.databaseURL;
 
 const getAllUsers = async () => {
-  const response = await fetch('http://localhost:8000/users', {
+  const response = await fetch(`${endpoint}/users`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -12,7 +14,7 @@ const getAllUsers = async () => {
 };
 
 const getSingleUser = async (id) => {
-  const response = await fetch(`http://localhost:8000/users/${id}`, {
+  const response = await fetch(`${endpoint}/users/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

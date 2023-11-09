@@ -1,5 +1,5 @@
 const clientCredentials = {
-  databaseURL: 'http://localhost:8000',
+  databaseURL: 'http://localhost:8088',
 };
 
 export default clientCredentials;
