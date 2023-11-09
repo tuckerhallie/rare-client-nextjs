@@ -2,7 +2,7 @@
   "name": "next-firebase-starter",
   "private": true,
   "version": "1.0.0",
-  "author": "Update Name!",
+  "author": "Sherwin McMaddens",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -13,6 +13,7 @@ function Home({ setToken }) {
   const password = useRef();
   const verifyPassword = useRef();
   const passwordDialog = useRef();
+  const profileImageUrl = useRef();
   const navigate = useRouter();
 
   const handleRegister = (e) => {
@@ -26,6 +27,7 @@ function Home({ setToken }) {
         email: email.current.value,
         password: password.current.value,
         bio: bio.current.value,
+        profileImageUrl: profileImageUrl.current.value,
       };
 
       registerUser(newUser).then((res) => {
@@ -77,6 +79,12 @@ function Home({ setToken }) {
         <div className="field">
           <label className="label">
             Bio <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio} />
+          </label>
+        </div>
+
+        <div className="register-field">
+          <label className="register-label">
+            Profile Url <input className="input" type="text" ref={profileImageUrl} />
           </label>
         </div>
 
