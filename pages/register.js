@@ -14,10 +14,8 @@ function Home({ setToken }) {
   const verifyPassword = useRef();
   const passwordDialog = useRef();
   const navigate = useRouter();
-
   const handleRegister = (e) => {
     e.preventDefault();
-
     if (password.current.value === verifyPassword.current.value) {
       const newUser = {
         username: username.current.value,
@@ -27,10 +25,10 @@ function Home({ setToken }) {
         password: password.current.value,
         bio: bio.current.value,
       };
-
       registerUser(newUser).then((res) => {
-        if ('valid' in res && res.valid) {
-          setToken(res.token);
+        const response = JSON.parse(res);
+        if ('valid' in response && response.valid) {
+          setToken(response.token);
           navigate.push('/');
         }
       });
@@ -38,7 +36,6 @@ function Home({ setToken }) {
       passwordDialog.current.showModal();
     }
   };
-
   return (
     <section className="columns is-centered">
       <form className="column is-two-thirds" onSubmit={handleRegister}>
@@ -49,37 +46,31 @@ function Home({ setToken }) {
             First Name <input className="input" type="text" ref={firstName} />
           </label>
         </div>
-
         <div className="field">
           <label className="label">
             Last Name <input className="input" type="text" ref={lastName} />
           </label>
         </div>
-
         <div className="field">
           <label className="label">
             Username <input className="input" type="text" ref={username} />
           </label>
         </div>
-
         <div className="field">
           <label className="label">
             Email <input className="input" type="email" ref={email} />
           </label>
         </div>
-
         <div className="field">
           <label className="label">
             Password <input className="input" type="password" placeholder="Password" ref={password} /> <input className="input" type="password" placeholder="Verify Password" ref={verifyPassword} />
           </label>
         </div>
-
         <div className="field">
           <label className="label">
             Bio <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio} />
           </label>
         </div>
-
         <div className="field is-grouped">
           <div className="control">
             <button className="button is-link" type="submit">
@@ -96,7 +87,6 @@ function Home({ setToken }) {
     </section>
   );
 }
-
 Home.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
