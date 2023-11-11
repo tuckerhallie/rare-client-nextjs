@@ -24,7 +24,7 @@ function AppNavBar({ token, setToken }) {
                 <Link passHref href="/">
                   <Nav.Link>Posts</Nav.Link>
                 </Link>
-                <Link passHref href="/Users">
+                <Link passHref href="/UsersPage">
                   <Nav.Link>Users</Nav.Link>
                 </Link>
               </>
