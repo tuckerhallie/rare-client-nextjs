@@ -38,7 +38,6 @@ function Home({ setToken }) {
       passwordDialog.current.showModal();
     }
   };
-
   return (
     <section className="columns is-centered">
       <form className="column is-two-thirds" onSubmit={handleRegister}>
