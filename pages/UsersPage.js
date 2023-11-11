@@ -1,55 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import getAllUsers from '../api/userData';
+import PropTypes from 'prop-types';
+import { getSingleUser } from '../api/userData';
 
-function UserTable() {
-  const [users, setUsers] = useState([]);
+function Profile({ token }) {
+  const [profile, setProfile] = useState({});
+
+  const getTheSingleUser = () => {
+    getSingleUser(token).then(setProfile);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getAllUsers();
-        setUsers(data);
-      } catch (error) {
-        console.error('Error fetching user data: ', error);
-      }
-    };
-
-    fetchData();
+    getTheSingleUser(token);
   }, []);
 
   return (
-    <div className="userTable">
-      <h1>Users</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Bio</th>
-            <th>Username</th>
-            <th>Created On</th>
-            <th>Active</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.first_name}</td>
-              <td>{user.last_name}</td>
-              <td>{user.email}</td>
-              <td>{user.bio}</td>
-              <td>{user.username}</td>
-              <td>{user.created_on}</td>
-              <td>{user.active}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="profile">
+      <div>
+        <img src={profile?.profile_image_url} alt={profile?.first_name} style={{ width: '100px' }} />
+        <h3>Name: {profile?.first_name} {profile?.last_name}</h3>
+        <br />
+        <h3>Email: {profile?.email}</h3>
+        <h3>Bio: {profile?.bio}</h3>
+        <h3>Username: {profile?.username}</h3>
+        <h3>Active Since: {profile?.created_on}</h3>
+      </div>
     </div>
   );
 }
 
-export default UserTable;
+Profile.propTypes = {
+  token: PropTypes.string.isRequired,
+};
+
+export default Profile;
