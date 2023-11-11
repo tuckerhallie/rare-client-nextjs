@@ -32,21 +32,22 @@ const createPost = async (payload) => {
     },
     body: JSON.stringify(payload),
   });
-  const newPost = await response.json();
-  return newPost;
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
 };
 
-const updatePost = async (payload) => {
-  const response = await fetch(`${clientCredentials.databaseURL}/posts/${payload.id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  });
-  const postUpdate = await response.json();
-  return postUpdate;
-};
+// const updatePost = async (payload) => {
+//   const response = await fetch(`${clientCredentials.databaseURL}/posts/${payload.id}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(payload),
+//   });
+//   const postUpdate = await response.json();
+//   return postUpdate;
+// };
 
 const deletePost = async (id) => {
   const response = await fetch(`${clientCredentials.databaseURL}/posts/${id}`, {
@@ -63,6 +64,6 @@ export {
   getAllPosts,
   getSinglePost,
   createPost,
-  updatePost,
+  // updatePost,
   deletePost,
 };

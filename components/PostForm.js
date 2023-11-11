@@ -38,7 +38,7 @@ function PostForm({ obj }) {
     } else {
       const payload = { ...formInput };
       createPost(payload).then(() => {
-        router.push('/posts');
+        router.push('/');
       });
     }
   };
