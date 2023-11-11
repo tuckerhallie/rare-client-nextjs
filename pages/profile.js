@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { getSingleUser } from '../api/userData';
 
-function Profile() {
+function Profile({ token }) {
   const [profile, setProfile] = useState({});
 
   const getTheSingleUser = () => {
-    getSingleUser(profile.id).then(setProfile);
+    getSingleUser(token).then(setProfile);
   };
 
   useEffect(() => {
-    getTheSingleUser(profile.id);
+    getTheSingleUser(token);
   }, []);
 
   return (
@@ -26,5 +27,9 @@ function Profile() {
     </div>
   );
 }
+
+Profile.propTypes = {
+  token: PropTypes.string.isRequired,
+};
 
 export default Profile;
