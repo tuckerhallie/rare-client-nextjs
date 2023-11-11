@@ -24,7 +24,31 @@ const getSinglePost = async (id) => {
   return post;
 };
 
+const createPost = async (payload) => {
+  // const response = await fetch(`${clientCredentials.databaseURL}/posts`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(payload),
+  // });
+  // const newPost = await response.json();
+  // return newPost;
+  const response = await fetch(`${clientCredentials.databaseURL}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+};
+
 export {
   getAllPosts,
   getSinglePost,
+  createPost,
 };
