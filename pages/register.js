@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { registerUser } from '../utils/data/AuthManager';
 
 function Home({ setToken }) {
@@ -12,7 +12,7 @@ function Home({ setToken }) {
   const bio = useRef();
   const password = useRef();
   const verifyPassword = useRef();
-  const passwordDialog = useRef();
+  const passwordDialog = useRef(null);
   const profileImageUrl = useRef();
   const navigate = useRouter();
 
@@ -27,7 +27,7 @@ function Home({ setToken }) {
         email: email.current.value,
         password: password.current.value,
         bio: bio.current.value,
-        profileImageUrl: profileImageUrl.current.value,
+        profile_image_url: profileImageUrl.current.value,
       };
 
       registerUser(newUser).then((res) => {
@@ -40,43 +40,50 @@ function Home({ setToken }) {
       passwordDialog.current.showModal();
     }
   };
+
+  // Use useEffect to ensure that passwordDialog.current is properly initialized
+  useEffect(() => {
+    passwordDialog.current = document.createElement('dialog');
+  }, []);
+
   return (
     <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleRegister}>
+      <form id="register" className="column is-two-thirds" onSubmit={handleRegister}>
         <h1 className="title">Rare Publishing</h1>
         <p className="subtitle">Create an account</p>
-        <div className="field">
-          <label className="label">
+        <div className="register-field">
+          <label className="register-label">
             First Name <input className="input" type="text" ref={firstName} />
           </label>
         </div>
 
-        <div className="field">
-          <label className="label">
+        <div className="register-field">
+          <label className="register-label">
             Last Name <input className="input" type="text" ref={lastName} />
           </label>
         </div>
 
-        <div className="field">
-          <label className="label">
+        <div className="register-field">
+          <label className="register-label">
             Username <input className="input" type="text" ref={username} />
           </label>
         </div>
 
-        <div className="field">
-          <label className="label">
+        <div className="register-field">
+          <label className="register-label">
             Email <input className="input" type="email" ref={email} />
           </label>
         </div>
 
-        <div className="field">
-          <label className="label">
-            Password <input className="input" type="password" placeholder="Password" ref={password} /> <input className="input" type="password" placeholder="Verify Password" ref={verifyPassword} />
+        <div className="register-field">
+          <label className="register-label">
+            Password <input className="input" type="password" placeholder="Password" ref={password} />
+            <input className="input verify-password" type="password" placeholder="Verify Password" ref={verifyPassword} />
           </label>
         </div>
 
-        <div className="field">
-          <label className="label">
+        <div className="register-field">
+          <label className="register-label">
             Bio <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio} />
           </label>
         </div>
