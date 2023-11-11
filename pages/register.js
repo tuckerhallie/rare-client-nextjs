@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { useRef, useEffect } from 'react'; // Import useEffect
+import { useRef, useEffect } from 'react';
 import { registerUser } from '../utils/data/AuthManager';
 
 function Home({ setToken }) {
@@ -12,7 +12,7 @@ function Home({ setToken }) {
   const bio = useRef();
   const password = useRef();
   const verifyPassword = useRef();
-  const passwordDialog = useRef(null); // Initialize with null
+  const passwordDialog = useRef(null);
   const profileImageUrl = useRef();
   const navigate = useRouter();
 
