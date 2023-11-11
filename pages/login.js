@@ -30,24 +30,24 @@ function Login({ setToken }) {
 
   return (
     <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleLogin}>
+      <form id="login" className="column is-two-thirds" onSubmit={handleLogin}>
         <h1 className="title">Rare Publishing</h1>
         <p className="subtitle">Please sign in</p>
 
-        <div className="field">
+        <div className="login-field">
           <label className="label">
             Username <input className="input" type="text" ref={username} />
           </label>
         </div>
 
-        <div className="field">
+        <div className="login-field">
           <label className="label">
             Password
             <input className="input" type="password" ref={password} />
           </label>
         </div>
 
-        <div className="field is-grouped">
+        <div className="field is-grouped submit">
           <div className="control">
             <button className="button is-link" type="submit">
               Submit
