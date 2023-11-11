@@ -24,7 +24,20 @@ const getSingleUser = async (id) => {
   return user;
 };
 
+const updateUser = async (payload) => {
+  const response = await fetch(`${clientCredentials.databaseURL}/users/${payload.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  const userUpdate = await response.json();
+  return userUpdate;
+};
+
 export {
   getAllUsers,
   getSingleUser,
+  updateUser,
 };

@@ -24,7 +24,45 @@ const getSingleComment = async (id) => {
   return comment;
 };
 
+const createComment = async (payload) => {
+  const response = await fetch(`${clientCredentials.databaseURL}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  const newComment = await response.json();
+  return newComment;
+};
+
+const updateComment = async (payload) => {
+  const response = await fetch(`${clientCredentials.databaseURL}/comments/${payload.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  const commentUpdate = await response.json();
+  return commentUpdate;
+};
+
+const deleteComment = async (id) => {
+  const response = await fetch(`${clientCredentials.databaseURL}/comments/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const commentDelete = await response.json();
+  return commentDelete;
+};
+
 export {
   getAllComments,
   getSingleComment,
+  createComment,
+  updateComment,
+  deleteComment,
 };

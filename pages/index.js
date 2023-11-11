@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import PostCard from '../components/postCard';
-import getAllPosts from '../api/postData';
+import { getAllPosts } from '../api/postData';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
