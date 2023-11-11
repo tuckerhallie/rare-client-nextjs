@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
-
 import { loginUser } from '../utils/data/AuthManager';
 
 function Login({ setToken }) {
@@ -10,39 +9,45 @@ function Login({ setToken }) {
   const password = useRef();
   const navigate = useRouter();
   const [isUnsuccessful, setisUnsuccessful] = useState(false);
+
   const handleLogin = (e) => {
     e.preventDefault();
+
     const user = {
       username: username.current.value,
       password: password.current.value,
     };
+
     loginUser(user).then((res) => {
-      const response = JSON.parse(res);
-      if ('valid' in response && response.valid) {
-        setToken(response.token);
+      if ('valid' in res && res.valid) {
+        setToken(res.token);
         navigate.push('/');
       } else {
         setisUnsuccessful(true);
       }
     });
   };
+
   return (
     <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleLogin}>
+      <form id="login" className="column is-two-thirds" onSubmit={handleLogin}>
         <h1 className="title">Rare Publishing</h1>
         <p className="subtitle">Please sign in</p>
-        <div className="field">
+
+        <div className="login-field">
           <label className="label">
             Username <input className="input" type="text" ref={username} />
           </label>
         </div>
-        <div className="field">
+
+        <div className="login-field">
           <label className="label">
             Password
             <input className="input" type="password" ref={password} />
           </label>
         </div>
-        <div className="field is-grouped">
+
+        <div className="field is-grouped submit">
           <div className="control">
             <button className="button is-link" type="submit">
               Submit
@@ -59,6 +64,7 @@ function Login({ setToken }) {
     </section>
   );
 }
+
 Login.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
