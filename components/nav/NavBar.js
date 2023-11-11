@@ -6,7 +6,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import Logo from './rare.jpeg';
 
 function AppNavBar({ token, setToken }) {
-  const navigate = useRouter();
+  const router = useRouter(); // Use useRouter to get the router object
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -33,7 +33,7 @@ function AppNavBar({ token, setToken }) {
                 className="button is-outlined"
                 onClick={() => {
                   setToken('');
-                  navigate('/login');
+                  router.push('/login'); // Use router.push to navigate
                 }}
               >
                 Logout
@@ -59,4 +59,5 @@ AppNavBar.propTypes = {
   token: PropTypes.string.isRequired,
   setToken: PropTypes.func.isRequired,
 };
+
 export default AppNavBar;
