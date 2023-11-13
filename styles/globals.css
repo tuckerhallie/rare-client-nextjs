@@ -4,8 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
 a {
@@ -18,9 +17,64 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: white;
 }
 
 .navbar-item img {
   max-height: 3rem;
+}
+
+.userpage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  color: white;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.userpage div {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px;
+  border: 2px solid black;
+}
+
+img {
+  border: 2px solid blue;
+}
+
+h3 {
+  color: blue;
+}
+
+.post-form {
+  border: 2px solid blue;
+  margin:20px;
+  text-align: center;
+}
+.post-form img {
+  border: 2px solid blue;
+}
+
+.post-form h2 {
+  color: blue;
+}
+
+.mb-3 {
+  margin: 10px;
+}
+
+.post-text {
+  text-align: center;
+}
+
+.add-post-button {
+  margin-bottom: 10px;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically if needed */
 }
