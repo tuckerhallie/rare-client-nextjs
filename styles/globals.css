@@ -75,6 +75,34 @@ h3 {
 
 .center-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically if needed */
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-posts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+home-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 20px; 
+
+}
+
+#home-cards .post-card {
+  flex: 0 1 300px;
+  max-height: 400px;
+  overflow: auto; 
+  margin: 10px; 
+  padding: 15px; 
+  border: 1px solid black; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+} */
+
+.title {
+  color: white;
 }
