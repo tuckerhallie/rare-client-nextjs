@@ -9,11 +9,11 @@ function AppNavBar({ token, setToken }) {
   const router = useRouter(); // Use useRouter to get the router object
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>
-            <Image src={Logo} height="3rem" alt="Rare Logo" /> <h1 className="title is-4">Rare Publishing</h1>
+            <Image src={Logo} height="3rem" alt="Rare Logo" /> <h1 className="title">Rare Publishing</h1>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
